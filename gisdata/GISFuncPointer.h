@@ -1,6 +1,7 @@
 #ifndef GISFUNCPOINTERS_H
 #define GISFUNCPOINTERS_H
 
+
 #include <cassert>
 #include <vector>
 
