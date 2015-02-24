@@ -54,7 +54,6 @@ private slots:
     void slotZoomMinus();
     void slotShowCoord(QString);
 
-//    void slotSelectProfileMenu(bool);
     void slotShowMapControlPanel(bool);
 
 private:

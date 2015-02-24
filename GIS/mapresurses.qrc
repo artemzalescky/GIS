@@ -1,0 +1,50 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Resurses/24/close_map.png</file>
+        <file>Resurses/24/map_zoom_minus.png</file>
+        <file>Resurses/24/map_zoom_plus.png</file>
+        <file>Resurses/24/open_map.png</file>
+        <file>Resurses/24/profile.png</file>
+        <file>Resurses/24/radar.png</file>
+        <file>Resurses/24/edit.png</file>
+        <file>Resurses/24/ruler.png</file>
+        <file>Resurses/24/add file.png</file>
+        <file>Resurses/24/add note.png</file>
+        <file>Resurses/24/remove file.png</file>
+        <file>Resurses/24/remove note.png</file>
+        <file>Resurses/24/connect.png</file>
+        <file>Resurses/24/open-folder.png</file>
+        <file>Resurses/24/save.png</file>
+        <file>Resurses/24/save-as.png</file>
+        <file>Resurses/32/ok.png</file>
+        <file>Resurses/32/draw_eraser.png</file>
+        <file>Resurses/32/tag_blue.png</file>
+        <file>Resurses/32/tag_blue_add.png</file>
+        <file>Resurses/32/tag_blue_delete.png</file>
+        <file>Resurses/32/tag_blue_edit.png</file>
+        <file>Resurses/painter/document-new.png</file>
+        <file>Resurses/painter/document-open.png</file>
+        <file>Resurses/painter/document-save.png</file>
+        <file>Resurses/painter/ellipse.png</file>
+        <file>Resurses/painter/fill.png</file>
+        <file>Resurses/painter/line.png</file>
+        <file>Resurses/painter/pencil.png</file>
+        <file>Resurses/painter/rectangle.png</file>
+        <file>Resurses/painter/asterisk_orange.png</file>
+        <file>Resurses/painter/draw_ellipse.png</file>
+        <file>Resurses/painter/draw_eraser.png</file>
+        <file>Resurses/painter/draw_island.png</file>
+        <file>Resurses/painter/draw_line.png</file>
+        <file>Resurses/painter/draw_path.png</file>
+        <file>Resurses/painter/draw_points.png</file>
+        <file>Resurses/painter/draw_polygon.png</file>
+        <file>Resurses/painter/draw_polyline.png</file>
+        <file>Resurses/painter/draw_star.png</file>
+        <file>Resurses/painter/draw_vertex.png</file>
+        <file>Resurses/painter/draw_wave.png</file>
+        <file>Resurses/add_group-256.png</file>
+        <file>Resurses/table.png</file>
+        <file>Resurses/todo-256.png</file>
+        <file>Resurses/32/import.png</file>
+    </qresource>
+</RCC>

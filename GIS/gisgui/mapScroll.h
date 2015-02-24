@@ -9,8 +9,6 @@
 #include "../gisdata/GISTypes.h"
 #include "../gisdata/userVFunctions.h"
 
-/*fgdfgdfgdf*/
-
 class QWidget;
 class QPainter;
 class QFileInfo;

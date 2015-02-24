@@ -27,7 +27,6 @@ namespace servfunc
 
     void writeLastMapName(QSettings*, const QString);
     QString readLastMapName(QSettings*);
-    //----------------------------------------------------------
 
     DOUBLEPOINT convertRadToDegree(const DOUBLEPOINT&);
     DOUBLEPOINT convertDegreeToRad(const DOUBLEPOINT&);
