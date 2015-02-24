@@ -45,6 +45,7 @@ int GISPainter::paintMapImage(QPainter* dst_, RECT* rect_)
 //--------------------------------------------------------
 int GISPainter::getShowScale()
 {
+    qDebug()<< "getShowScale";
     return GISLibrary.getShowScale(hmap);
 }
 
@@ -59,30 +60,49 @@ QPoint GISPainter::changeShowScale(QPoint point_, float k_)
         point_.setX(pointX);
         point_.setY(pointY);
     }
+
+    qDebug()<< "changeShowScale";
     return point_;
 }
 
 //--------------------------------------------------------
+/**
+ * @brief GISPainter::getScrCoordByMM перевести координаты из пикселей в метры
+ * @param mmpoint_
+ * @return
+ */
 QPoint GISPainter::getScrCoordByMM(DOUBLEPOINT mmpoint_)
 {
     QPoint resPoint(0, 0);
     DOUBLEPOINT tmpPoint = GISLibrary.translateMMToPicture(hmap, mmpoint_);
     resPoint.setX(tmpPoint.X);
     resPoint.setY(tmpPoint.Y);
+    qDebug()<< "getScrCoordByMM";
     return resPoint;
 }
 
 //--------------------------------------------------------
+/**
+ * @brief GISPainter::getMMCoordByScr пересчёт из (plane) метров в (picture) пиксели
+ * @param scrpoint_
+ * @return
+ */
 DOUBLEPOINT GISPainter::getMMCoordByScr(DOUBLEPOINT scrpoint_)
 {
+    qDebug()<< "getMMCoordByScr";
     return GISLibrary.translatePictureToMM(hmap, scrpoint_);
 }
 
 //--------------------------------------------------------------
+/**
+ * @brief GISPainter::getScrCoord получить picture() координаты в пикселях
+  */
 QPoint GISPainter::getScrCoord(DOUBLEPOINT coord_,
                                 GISTYPESC typecs_,
                                 GISVALUETYPE valuetype_)
 {
+    qDebug()<< "<<<<<<<<<<>>>>>>>>>>>";
+
     if(valuetype_ == GVT_DEG)
     {
         coord_ = servfunc::convertDegreeToRad(coord_);

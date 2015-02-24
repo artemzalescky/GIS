@@ -34,8 +34,6 @@ private:
     bool m_first;
 
     MapControlPanel *mapControlPanel;           //объект инициализации панели со значками
-    DistanceCalculatorWidget * distCalcWidget;     //Виджет калькулятора расстояний(widget)
-
 
 
     QLabel  *labelSB_CS;
@@ -56,7 +54,6 @@ private slots:
     void slotZoomMinus();
     void slotShowCoord(QString);
 
-//    void slotSelectProfileMenu(bool);
     void slotShowMapControlPanel(bool);
 
 private:

@@ -7,17 +7,13 @@
 
 #include "./gisgui/mapScroll.h"
 #include "./gisgui/mapControlPanel.h"             //Класс, в котором реализовано создание значков для панели(ToolBar)
-#include "./gisgui/distanceCalculatorWidget.h"    //калькулятор расстояний(widget)
-
 #include "./gisdata/userVFunctions.h"
 
 
 MainWindow::MainWindow(QWidget *parent_, Qt::WFlags flags_) :
     QMainWindow(parent_, flags_),
     ui(new Ui::MainWindow),
-    mapScroll(new MapScroll(this)), //скролинг карты
-    distCalcWidget(NULL)            //калькулятор расстояния
-
+    mapScroll(new MapScroll(this)) //скролинг карты
 {
     ui->setupUi(this);
     setCentralWidget(mapScroll);
