@@ -9,6 +9,9 @@
 #include "../gisdata/GISTypes.h"
 #include "../gisdata/userVFunctions.h"
 
+
+/*11111111111111*/
+
 class QWidget;
 class QPainter;
 class QFileInfo;
