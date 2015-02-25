@@ -8,9 +8,7 @@
 #include "../gisdata/GISPainter.h"
 #include "../gisdata/GISTypes.h"
 #include "../gisdata/userVFunctions.h"
-
-
-/*11111111111111*/
+#include "../gisgui/plane.h"
 
 class QWidget;
 class QPainter;
@@ -25,6 +23,7 @@ public:
 
 private: //Data
     GISPainter gisData;
+    Plane plane;
 
     RECT	rectDraw;
     QWidget	*widget;
@@ -32,13 +31,12 @@ private: //Data
     APPGISOPTIONS appGisOptions;           //настройки по умолчанию карты
     APPPATHSHOWOPTIONS appPathShowOptions; //настройка по умолчанию параметров  (PATH)
 
-    bool centerMode;
     bool tmpCoordMode;
     bool pathFromFile;
-    bool startObj;
+   // bool startObj;
 
     DOUBLEPOINT tmpCoord;    
-    QPoint objSecPoint;
+  //  QPoint objSecPoint;
 
 
 public:
@@ -65,16 +63,6 @@ private:
 
     void setGISViewParam(MAPSHOWOPTIONS);
 
-//=== uobjpainter.cpp
-    void paintCurrentPath(QPainter* painter_);
-    void paintPLMode(QPainter* painter_, QPoint);
-    void paintPatrolMode(QPainter* painter_, QPoint center_);
-
-    void paintObjByMove(QPainter*, QPoint);
-    void paintCurrentCritSheme(QPainter* painter_);
-
-
-//===
 public:
     QString getIniName();
     GISPainter* getGISDataP();
@@ -116,8 +104,6 @@ public slots:
     void slotUpdateViewOptions();
 
 
-    void slotSetCenterMode(bool);
-
     void slotSetTmpCoordMode(bool);
 
 signals:
@@ -134,6 +120,7 @@ signals:
     void signalSetDistance(double);
 
     void signalGetMapName(QString);
+    
 
 };
 

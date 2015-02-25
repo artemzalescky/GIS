@@ -18,11 +18,12 @@ bool GISProvider::LoadMapData(const char* mapfile_,
         return 0;
     }
 
-    m_FileName = mapfile_;
+    fileName = mapfile_;
     if(MtrExsist_)
     {
         addMtrToMap(mtrfile_);
     }
+
     hselect = GISLibrary.createSelectContecxt(hmap);
 
     return IsLoaded();
@@ -38,7 +39,7 @@ int GISProvider::addMtrToMap(const char* mtrfilename_)        //????????????????
         GISLibrary.closeMtr(hmap, 0);
         return 0;
     }
-    m_MtrName = mtrfilename_;
+    mtrName = mtrfilename_;
     return m_nummtr;
 }
 
@@ -74,8 +75,8 @@ bool GISProvider::CloseData()
         hmap = 0;
     }
 
-    m_FileName = "";
-    m_MtrName = "";
+    fileName = "";
+    mtrName = "";
 
         return true;
 

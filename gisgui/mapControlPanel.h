@@ -17,18 +17,12 @@ signals:
     void signalCloseMap();
     void signalZoomPlus();
     void signalZoomMinus();
-    void signalProfileShow();
-    void signalShowDistCalc();
-    void signalSetCenter(bool);  //Установить как центр отображения карты(?????? не работает!!! проверка!!!!)
 
 private slots:
-    void slotPressZoomPlus();
-    void slotPressZoomMinus();
     void slotPressOpenMap();
     void slotPressCloseMap();
-    void slotPressProfile();
-    void slotPressDistCalc();   //калькулятор расстояний
-    void slotPressSetCenter();  //Установить как центр отображения карты(?????? не работает!!! проверка!!!!)
+    void slotPressZoomPlus();
+    void slotPressZoomMinus();
 
 private:
     void initializeItems();
@@ -37,10 +31,7 @@ private:
     QToolButton *mapOpenButton,
                 *mapCloseButton,
                 *zoomPlusButton,
-                *zoomMinusButton,
-                *profileButton,
-                *distCalcButton,
-                *setCenterButton;
+                *zoomMinusButton;
     
 };
 

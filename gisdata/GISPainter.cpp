@@ -77,7 +77,7 @@ QPoint GISPainter::getScrCoordByMM(DOUBLEPOINT mmpoint_)
     DOUBLEPOINT tmpPoint = GISLibrary.translateMMToPicture(hmap, mmpoint_);
     resPoint.setX(tmpPoint.X);
     resPoint.setY(tmpPoint.Y);
-    qDebug()<< "getScrCoordByMM";
+ //   qDebug()<< "getScrCoordByMM";
     return resPoint;
 }
 
@@ -89,7 +89,7 @@ QPoint GISPainter::getScrCoordByMM(DOUBLEPOINT mmpoint_)
  */
 DOUBLEPOINT GISPainter::getMMCoordByScr(DOUBLEPOINT scrpoint_)
 {
-    qDebug()<< "getMMCoordByScr";
+   // qDebug()<< "getMMCoordByScr";
     return GISLibrary.translatePictureToMM(hmap, scrpoint_);
 }
 

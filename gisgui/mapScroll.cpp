@@ -1,4 +1,3 @@
-
 #include "mapScroll.h"
 
 #include <QtGui>
@@ -8,22 +7,22 @@
 #include <QTextCodec>
 #include <math.h>
 
-
 MapScroll::MapScroll(QWidget * parent_)
     : QScrollArea(parent_),
-      widget(0),
-      centerMode(false)
+      widget(0)
 {
-    this->setMouseTracking(true);
+    this->setMouseTracking(true); // лабел координат
 
-    startObj = false;
     tmpCoordMode = false;
 
     tmpCoord.x = -11111;
     tmpCoord.y = -11111;
+
+    plane = Plane();
+    plane.setX(100);
+    plane.setY(50);
 }
 
-//-------------------------------------------------------------
 MapScroll::~MapScroll()
 {}
 
@@ -58,6 +57,7 @@ bool MapScroll::eventFilter (QObject * watched, QEvent * event)
 {
     if (event->type() == QEvent::Paint && widget != 0 & widget == watched)
     {
+        qDebug()<<"event";
         QPainter p;
         p.begin(widget);
         if(gisData.IsLoaded())
@@ -69,6 +69,10 @@ bool MapScroll::eventFilter (QObject * watched, QEvent * event)
                 paintrect.right = ((QPaintEvent *)event)->rect().right() + 1;
 
                 gisData.paintMapImage(&p, &paintrect);
+
+
+                plane.draw(&p);
+          //      p.drawEllipse(QPoint(100,10), 5,5);
             }
 
         p.end();
@@ -97,6 +101,7 @@ int  MapScroll::loadMapFile(QString nameMapFile_)
 
     if(loadingFileInfo.completeSuffix() == "map" || loadingFileInfo.completeSuffix() == "MAP")
     {
+
         QString mtrName(servfunc::createMtwFileName(nameMapFile_));
         QFile file(mtrName);
         if(!gisData.LoadMapData(nameMapFile_.toLocal8Bit(),
@@ -112,6 +117,7 @@ int  MapScroll::loadMapFile(QString nameMapFile_)
         long int mapW(gisData.getPictureWidth()),
                 mapH(gisData.getPictureHeigth());
 
+
         if (widget == 0)
         {
             widget = new QWidget(viewport());
@@ -125,8 +131,8 @@ int  MapScroll::loadMapFile(QString nameMapFile_)
         }
         widget->setGeometry(0, 0, mapW, mapH);
         setFocus();
-        readMapSettings();
-        qDebug() << getIniName();
+         readMapSettings();
+        //qDebug() << getIniName();
         repaint();
         return 1;
     }
@@ -235,10 +241,10 @@ void MapScroll::writeMapComposition(QSettings* settings_)
     char strtext[256];
 
     settings_->beginGroup("Map_Composition");
-    int CountLayer(gisData.getCountLayers());
+    int CountLayer = gisData.getCountLayers();
     qDebug()<<"Layer map Composition";
     settings_->setValue("Layers_Count", CountLayer);
-    for (int i(1); i < CountLayer; i++)
+    for (int i = 1; i < CountLayer; i++)
     {
         settings_->setValue(QString("Layer_%1").arg(i), gisData.isLayerChecked(i));
         sprintf(strtext, gisData.getNameLayerByNum(i));
@@ -250,7 +256,7 @@ void MapScroll::writeMapComposition(QSettings* settings_)
         settings_->setValue(QString("Layer_%1_name").arg(i), layername);
         int countObj(gisData.getCountObjInLayer(i));
         settings_->setValue(QString("Layers_Obj_Count_%1").arg(i), countObj);
-        for (int j(1); j < countObj + 1; j++)
+        for (int j = 1; j < countObj + 1; j++)
         {
             settings_->setValue(QString("Object_%1_%2").arg(i).arg(j), gisData.isCheckedObjInLayer(i, j));
             sprintf(strtext, gisData.getNameObjInLayer(i, j).c_str());
@@ -407,12 +413,6 @@ void MapScroll::mouseReleaseEvent(QMouseEvent *event_)
     emit signalMapPointStrByMouseRelese(getMapPointByMMAsStr(mmpoint));
 
 
-    if(centerMode)
-    {
-        setCenterViewByMM(mmpoint);
-        centerMode = false;
-        //TODO: emit signal for up buton
-    }
 
     if(getTmpCoordMode())
     {
@@ -554,10 +554,6 @@ void MapScroll::slotUpdateViewOptions()
 }
 
 //-------------------------------------------------------------
-void MapScroll::slotSetCenterMode(bool set_)
-{
-    centerMode = set_;
-}
 
 DOUBLEPOINT MapScroll::invertWGSfromPhoto(DOUBLEPOINT wgspoint_)
 {

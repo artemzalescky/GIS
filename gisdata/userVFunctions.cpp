@@ -29,6 +29,10 @@ QString servfunc::createImhFileName(QString imhdir_, int num_)
 }
 
 
+
+
+
+
 //Параметры отображения карты
 void  servfunc::readMapShowOptions(QSettings* settings_, MAPSHOWOPTIONS& data_)
 {

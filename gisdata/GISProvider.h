@@ -12,8 +12,8 @@ protected:
     HMAP hmap;             //идентификатор открытых данных
     HSELECT hselect;       //идентификатор контекста условий поиска и отображения
     long m_nummtr;
-    QString m_FileName;
-    QString m_MtrName;
+    QString fileName;
+    QString mtrName;
 
     SharedGISLibrary GISLibrary;  //Функционал для работы с картой (реализованы методы mapapi.h)
 
@@ -21,8 +21,8 @@ public:
     GISProvider():
         hmap(NULL),
         hselect(NULL),
-        m_FileName(""),
-        m_MtrName(""){}
+        fileName(""),
+        mtrName(""){}
 
     ~GISProvider() { CloseData(); }
 
@@ -42,7 +42,7 @@ public:
     bool IsLoaded() const;
     QString getNameMapFile() const
     {
-        return m_FileName;
+        return fileName;
     }
 
     long int getBaseScale();

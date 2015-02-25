@@ -28,24 +28,12 @@ void MapControlPanel::initializeItems()
     zoomMinusButton = createToolButton(tr("Уменьшить изображение"), ":/Resurses/24/map_zoom_minus.png");
     connect(zoomMinusButton, SIGNAL(clicked()), this, SLOT(slotPressZoomMinus()));
 
-    profileButton = createToolButton(tr("Показать профиль"), ":/Resurses/24/profile.png");
-    connect(profileButton, SIGNAL(clicked()), this, SLOT(slotPressProfile()));
-
-    distCalcButton = createToolButton(tr("Калькулятор расстояния"), ":/Resurses/24/ruler.png");
-    connect(distCalcButton, SIGNAL(clicked()), this, SLOT(slotPressDistCalc()));
-
-    setCenterButton = createToolButton(tr("Установить как центр отображения карты"), ":/Resurses/24/connect.png");
-    connect(setCenterButton, SIGNAL(clicked()), this, SLOT(slotPressSetCenter()));
-
     addWidget(mapOpenButton);
     addWidget(mapCloseButton);
     addSeparator();
     addWidget(zoomPlusButton);
-    addWidget(zoomMinusButton);
-    addWidget(setCenterButton);
+    addWidget(zoomMinusButton);  
     addSeparator();
-//    addWidget(profileButton);
-//    addWidget(distCalcButton);
 }
 
 void MapControlPanel::slotPressZoomPlus()
@@ -63,16 +51,4 @@ void MapControlPanel::slotPressOpenMap()
 void MapControlPanel::slotPressCloseMap()
 {
     emit signalCloseMap();
-}
-void MapControlPanel::slotPressProfile()
-{
-    emit signalProfileShow();
-}
-void MapControlPanel::slotPressDistCalc()
-{
-    emit signalShowDistCalc();
-}
-void MapControlPanel::slotPressSetCenter()
-{
-    emit signalSetCenter(true);
 }
